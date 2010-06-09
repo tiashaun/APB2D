@@ -1,0 +1,1 @@
+#include "APBApp.h"int main(int argc, char* argv[]){    APBApp app;    app.setDisplayProperties(800, 480, 16);    return app.execute();}
