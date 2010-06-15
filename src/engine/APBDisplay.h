@@ -1,0 +1,1 @@
+#ifndef _APBDISPLAY_H#define _APBDISPLAY_Hclass APBDisplay{public:    APBDisplay();    int init(int width, int height, int bpp);    virtual ~APBDisplay();protected:private:    int width;    int height;    int bpp;};#endif

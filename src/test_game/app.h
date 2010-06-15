@@ -1,0 +1,1 @@
+#ifndef _TESTGAME_H_#define _TESTGAME_H_#include "APBApp.h"class TestGame : public APBApp {public:    TestGame();    bool loadData();    void render();    void cleanup();    void loop();private:    SDL_Surface* surfTest;    APBAnimation NumberTestSprite;};#endif

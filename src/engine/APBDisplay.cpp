@@ -1,0 +1,1 @@
+#include "APBDisplay.h"#include <SDL.h>APBDisplay::APBDisplay(){    width = 800;    height = 600;    bpp = 16;}APBDisplay::~APBDisplay(){    //dtor}
