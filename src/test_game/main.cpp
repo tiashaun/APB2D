@@ -1,1 +1,0 @@
-#include "app.h"int main( int argc, char* argv[] ) {    TestGame game;    game.setDisplayProperties( 800, 480, 16 );    return game.execute();}
