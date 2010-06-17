@@ -45,7 +45,7 @@ int APBApp::execute() {
             loop();
             render();
         }
-        // cap framerate        SDL_Delay(FRAMELIMITER_DELAY_MAX - (SDL_GetTicks() - currentTime));    }
+        // cap framerate        if((SDL_GetTicks() - currentTime) <= FRAMELIMITER_DELAY_MAX) {            SDL_Delay(FRAMELIMITER_DELAY_MAX - (SDL_GetTicks() - currentTime));        }    }
 
     cleanup();
 
