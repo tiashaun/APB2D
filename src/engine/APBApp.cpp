@@ -1,7 +1,6 @@
 #include "APBApp.h"
 
-const Uint32 FRAMELIMITER_DELAY_MINIMUM = 10;
-const Uint32 UPDATE_RATE = 1000 / 30;
+const Uint32 FRAMELIMITER_DELAY_MAX = 30;
 
 APBApp::APBApp() {
     display = NULL;
@@ -34,32 +33,19 @@ int APBApp::execute() {
 
     Uint32 lastUpdateTime = SDL_GetTicks();
     Uint32 previousFrameTime = SDL_GetTicks();
-
+    Uint32 ticks = 0;
     while (running) {
         while (SDL_PollEvent(&Event)) {
             APBApp::event(&Event);
         }
 
         Uint32 currentTime = SDL_GetTicks();
-        Uint32 difference = currentTime  - lastUpdateTime;
 
         if (!paused) {
-            while(difference >= UPDATE_RATE) {
-                difference -= UPDATE_RATE;
-                loop();
-                lastUpdateTime = currentTime;
-            }
-
+            loop();
             render();
-
-            Uint32 currentFrameTime = SDL_GetTicks();
-            Uint32 ticks = currentFrameTime - previousFrameTime;
-            if(ticks  > FRAMELIMITER_DELAY_MINIMUM) {
-                SDL_Delay(ticks - FRAMELIMITER_DELAY_MINIMUM);
-            }
-            previousFrameTime = currentFrameTime;
         }
-    }
+        // cap framerate        SDL_Delay(FRAMELIMITER_DELAY_MAX - (SDL_GetTicks() - currentTime));    }
 
     cleanup();
 
